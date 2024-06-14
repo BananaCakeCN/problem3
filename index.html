@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Problem Index 2</title>
+        <style>
+            @keyframes hide {
+                100%{
+                    transform: translateY(-50px);
+                    filter: opacity(0);
+                }
+            }
+            body{
+                font-family: Arial, Helvetica, sans-serif;
+                margin: 0;
+            }
+            #start{
+                height: 100%;
+                width: 100%;
+                position: fixed;
+                background-color: #fff;
+            }
+            p, span, h1, h2, h3{
+                margin-left: 20px;
+                margin-right: 20px;
+            }
+            #example{
+                float: right;
+                right: 50px;
+                position: absolute;
+            }
+            #startBTN{
+                width: 250px;
+                background-color: #1a5ded;
+                border-radius: 15px;
+                padding: 15px;
+                color: #fff;
+                text-align: center;
+                font-size: 20px;
+                margin: 20px;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+            }
+            #startBTN:hover{
+                background-color: #0037db;
+            }
+            #content{
+                position: absolute;
+                width: calc(100% - 350px);
+            }
+            exponent{
+                position: relative;
+                bottom: 1.5ex;
+                font-size: 50%;
+            }
+            #explainGraph{
+                margin-left: 20px;
+                position: fixed;
+                right: 20px;
+            }
+            td, th{
+                border: 1px solid #000;
+            }
+            #graph{
+                position: fixed;
+                right: 50px;
+                top: 50px;
+            }
+            #area{
+                margin-left: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="content">
+            <h1>Area calculations</h1>
+            <h2>Calculate the area of a circle</h2>
+            <p>We all know that for a circle, the formula of area = πr<exponent>2</exponent>. But why is it?</p>
+            <p>Now we have a circle as the image shown</p>
+            <div id="cvs">
+                <canvas id="area" width="500"></canvas>
+            </div>
+            </br>
+            <p style="display: inline;">Input the amount of pieces: </p>
+            <input type="number" id="pieces" value="4">
+            <p>(bro literally spend 2 hrs to make this)</p>
+            <p>As the split amount of the circle increasing, the area of reformed shape is getting more and more close to the rectangle.</p>
+            <p>The width of rectangle is the orginal radius. Because of the cross arrangement sector, the length is half of the circumference.</p>
+            <p>The formula for circumference is πd, since the circumference is always π times than the diameter (d).</p>
+            <p>πd divide by 2, then times r is the formula of a circle, simplyfy it:</p>
+            <p>πd/2*r</p>
+            <p>=πr*r (since diameter is always 2 times than radius)</p>
+            <p>=πr<exponent>2</exponent></p>
+            <h2 id="scroll1">Infinitely close</h2>
+            <p>Now consider the question, is infinitely close to the rectangle equals to the rectangle?</p>
+            <p>Here is an example:</p>
+            <p>∵0.333... = 1/3</p>
+            <p>0.333... * 3 = 0.999..., 1/3 * 3 = 1</p>
+            <p>∴1 = 0.999...</p>
+            <p>∴Infinitely close is an equal.</p>
+            <p>So the area of a circle is exaclty πr<exponent>2</exponent></p>
+            <h2>"A farmer uses a circular water sprayer to irrigate a square shaped field. The diameter of the watered circles is 20 metres. "</h2>
+            <h2>Calculating the unwatered area</h2>
+            <p>Calculating the unwatered area is easy. All you need to do is to subtract the watered area from the total area.</p>
+            <p>We know that the watered area is made up of four circles which has the diameter of 20. So the total area as a square is 20 * 20.</p>
+            <p>Evaluate it. w<exponent>2</exponent> - 4πr<exponent>2</exponent></p>
+            <p>=(20 * 2)<exponent>2</exponent> - 4 * π * (20 / 2)<exponent>2</exponent></p>
+            <p id="scroll2">=1600-400π</p>
+            <p>π to the 2nd decimal</p>
+            <p>=344</p>
+            <h2>Calculating the central shading area</h2>
+            <p>There are multiple ways to evaluate the area of the central shading area.</p>
+            <p><b>1st way</b>: only leave the central 1/4 of the pattern, then evaluate.</p>
+            <p>We can get rid of the outer graph that is necessary as the graph at right shown</p>
+            <p>As you can see, we have 4 of the 90 degress sector with a radius of 10 meters as the watered area, the whole field has the side length of 20 meters</p>
+            <p>Now we can evaluate it.</p>
+            <p>20<exponent>2</exponent> - 4 * 1/4 * π * 10<exponent>2</exponent></p>
+            <p>=400 - 100π</p>
+            <p>π to the 2nd decimal</p>
+            <p id="scroll3">=86</p>
+            <p><b>2nd way</b>: calculate all of the unwatered area, then divide.</p>
+            <p>Look at the graph at the right. You can find the unwatered area can be equally split to 16 pieces of the same shape, and there are total 4 of them in the center.</p>
+            <p>We we need to do now is to subtract the watered area from the total area to get the unwatered area, then divide by 16 and times 4.</p>
+            <p>[(20 * 2)<exponent>2</exponent> - 4 * π * (20 / 2)<exponent>2</exponent>] / 16 * 4</p>
+            <p>=400-100π</p>
+            <p>π to the 2nd decimal</p>
+            <p id="scroll4">=86</p>
+            <h2>Calculating the new central water spiller</h2>
+            <p>Evaluate the center watered circle that is the maximum size but not inheriting others is still easy.</p>
+            <p>As the image shown on the right, all you need to do is get the diagonal length and subtract those two radius.</p>
+            <p>The base side length is 20 meters, so the diagonal length is √(20<exponent>2</exponent> + 20<exponent>2</exponent>)</p>
+            <p>≈28.28 meters</p>
+            <p>Reduce the radius of the original circle, you can get the new diameter.</p>
+            <p>28.28 - (10 + 10) = 8.28 meters</p>
+            <p>We can get the area with the diameter</p>
+            <p>πr<exponent>2</exponent></p>
+            <p>=π(8.28/2)<exponent>2</exponent></p>
+            <p>=17.9776π</p>
+            <p>π to the 2nd decimal</p>
+            <p>=56.449664</p>
+            <h2>Extension questions</h2>
+            <p>Is the watered area over 80% of the total field?</p>
+            <p>Original area:</p>
+            <p>π * 10<exponent>2</exponent> * 4 + 56</p>
+            <p>π to the 2nd decimal</p>
+            <p>1312/1600=82%</p>
+            <p>82%>80% ∴yes</p>
+            <br>
+            <p>What is the radius of the circle if you want to spill all the field using 4 spiller?</p>
+            <p>Solve for the diagonal length:</p>
+            <p>√(20+20)<exponent>2</exponent> * 2</p>
+            <p>≈56.57</p>
+            <p>56.57 / 2 / 2 = 14.1425</p>
+        </div>
+        <div id="start">
+            <h1>Math Problem of Water Sprayer</h1>
+            <h2>Mathematics 9: Problem Index 2</h2>
+            <div style="position: absolute; bottom: 0;">
+                <p>Coby Qiu</p>
+                <div id="startBTN">Start</div>
+            </div>
+        </div>
+        <canvas id="graph" width="300" height="300"></canvas>
+        <script src="index.js"></script>
+    </body>
+</html>
